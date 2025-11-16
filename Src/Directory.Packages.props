@@ -1,0 +1,9 @@
+﻿<Project>
+<!--    <PropertyGroup>-->
+<!--        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>-->
+<!--        <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>-->
+<!--    </PropertyGroup>-->
+    <ItemGroup>
+        <!--Microsoft.Extensions.Localization -->
+    </ItemGroup>
+</Project>

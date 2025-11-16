@@ -1,0 +1,33 @@
+{
+  "name": "lms-components",
+  "version": "1.0.1",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "format": "prettier wwwroot/libs --write",
+    "build": "esbuild ./wwwroot/libs/index.ts --bundle --minify --target=es6 --outfile=wwwroot/index.js && tailwindcss -i wwwroot/app.css -o wwwroot/app.min.css --minify",
+    "lint": "eslint wwwroot/libs"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "esbuild": "^0.23.1",
+    "postcss": "^8.4.41",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.10",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.5.4"
+  },
+  "optionalDependencies": {
+    "@eslint/js": "^9.8.0",
+    "eslint": "^9.8.0",
+    "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-sonarjs": "^2.0.1",
+    "eslint-plugin-unicorn": "^55.0.0",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "typescript-eslint": "^8.2.0"
+  }
+}

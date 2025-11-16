@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+    <PackageReference Include="TailwindMerge.NET" Version="1.2.0"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Remove="tsconfig.json" />
+    <None Include="tsconfig.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="SharedImports\_Imports.razor" />
+  </ItemGroup>
+  
+  <Import Project="..\..\.targets\NodePackages.targets" />
+
+  <Target Name="StaticsBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="npm run build" />
+  </Target>
+
+</Project>
