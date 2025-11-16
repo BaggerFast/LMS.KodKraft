@@ -1,0 +1,36 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <!-- Имя файла маркера -->
+        <BunLastInstall>node_modules/.bun</BunLastInstall>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Remove="package.json" />
+        <None Include="package.json">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <Content Remove="bun.lock" />
+        <None Include="bun.lock">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <Content Remove="tsconfig.json" />
+    </ItemGroup>
+
+    <!-- Проверка, что Bun установлен -->
+    <Target Name="CheckForBun" BeforeTargets="BunInstall">
+        <Exec Command="bun -v" ContinueOnError="true" ConsoleToMsBuild="false" IgnoreExitCode="false">
+            <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+        </Exec>
+        <Error Text="Bun is not installed. Please install it" Condition="'$(ErrorCode)' != '0'" />
+    </Target>
+
+    <!-- Установка Bun зависимостей (если нет маркера) -->
+    <Target Name="BunInstall" BeforeTargets="StaticsBuild" Inputs="package.json" Outputs="$(BunLastInstall) ">
+        <Message Text=" " Importance="High" />
+        <Message Text="---------------------------------------" Importance="High" />
+        <Message Text="Installing Bun dependencies: $(MSBuildProjectName)" Importance="High" />
+        <Message Text="---------------------------------------" Importance="High" />
+        <Exec Command="bun install" ConsoleToMsBuild="false" IgnoreExitCode="false" />
+        <Touch Files="$(BunLastInstall)" AlwaysCreate="true" />
+    </Target>
+</Project>

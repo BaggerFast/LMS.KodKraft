@@ -7,16 +7,11 @@
 
     <ItemGroup>
         <PackageReference Include="BlazorMonaco" Version="3.4.0" />
-        <PackageReference Include="GaelJ.BlazorCodeMirror6" Version="0.10.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.11"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Tools\LMS.Components\LMS.Components.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Source\Pages\" />
+      <ProjectReference Include="..\..\..\Libs\LMS.Components\LMS.Components.csproj" />
     </ItemGroup>
 
 <!--    <ItemGroup Label="Shared blazor imports">-->

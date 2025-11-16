@@ -20,10 +20,7 @@
     <UpToDateCheckInput Remove="SharedImports\_Imports.razor" />
   </ItemGroup>
   
-  <Import Project="..\..\.targets\NodePackages.targets" />
-
-  <Target Name="StaticsBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="npm run build" />
-  </Target>
+  <Import Project="..\..\.targets\bun\Install.targets" />
+  <Import Project="..\..\.targets\bun\Build.targets" />
 
 </Project>
